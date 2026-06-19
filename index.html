@@ -3,103 +3,430 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mobile Detailing - Dein Auto verdient das Beste</title>
-    <meta name="description" content="Mobile Detailing: Professionelle Fahrzeugpflege vor Ort. Außenreinigung, Innenreinigung, Keramik-Beschichtung und mehr.">
+    <title>Mobile Detailing - Professionelle Fahrzeugpflege vor Ort</title>
+    <meta name="description" content="Mobile Detailing: Professionelle Fahrzeugpflege bei dir vor Ort. Außenreinigung, Innenreinigung, Keramik-Beschichtung und mehr.">
+    <meta name="theme-color" content="#001f3f">
+    <meta property="og:title" content="Mobile Detailing - Dein Auto verdient das Beste">
+    <meta property="og:description" content="Professionelle Fahrzeugpflege vor Ort mit besten Materialien.">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="de">
     <style>
         :root{
-            --primary: #001f3f; /* Marineblau */
+            --primary: #001f3f;
             --primary-600: #003050;
             --accent: #667eea;
             --muted: #f6f7fb;
             --card: #ffffff;
             --text: #21303a;
             --glass: rgba(255,255,255,0.06);
+            --success: #10b981;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
         }
-        *{box-sizing:border-box}
-        body{
+        *{
+            box-sizing:border-box;
             margin:0;
-            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            padding:0;
+        }
+        html{scroll-behavior:smooth}
+        body{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             color:var(--text);
             background:linear-gradient(180deg,#fbfdff 0%, #f7f9fc 100%);
             -webkit-font-smoothing:antialiased;
+            line-height:1.6;
         }
+        
+        /* Header & Navigation */
         header.hero{
-            min-height:320px;
-            background-image:linear-gradient(180deg, rgba(0,31,63,0.6), rgba(0,31,63,0.2)), url('https://source.unsplash.com/1600x900/?car,detailing');
+            min-height:420px;
+            background:linear-gradient(135deg, rgba(0,31,63,0.75) 0%, rgba(0,48,80,0.6) 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="%23001f3f"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
             background-size:cover;
             background-position:center;
+            background-attachment:fixed;
             color:#fff;
             display:flex;
             align-items:center;
-            padding:3rem 1rem;
+            padding:2rem 1rem;
+            position:relative;
+            overflow:hidden;
         }
-        .hero-inner{max-width:1100px;margin:0 auto;display:flex;gap:2rem;align-items:center}
-        .hero-text{flex:1}
-        .hero-text h1{font-size:2.2rem;margin-bottom:0.5rem;letter-spacing:-0.5px}
-        .hero-text p{opacity:0.95;margin-bottom:1rem}
-        .cta{display:inline-block;background:var(--primary);color:#fff;padding:0.75rem 1.1rem;border-radius:8px;text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(0,31,63,0.25)}
-        .cta.secondary{background:transparent;border:2px solid rgba(255,255,255,0.18);margin-left:0.5rem}
+        header.hero::before{
+            content:'';
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background:radial-gradient(circle at 80% 20%, rgba(102,126,234,0.1) 0%, transparent 50%);
+            pointer-events:none;
+        }
+        .hero-inner{
+            max-width:1200px;
+            margin:0 auto;
+            display:flex;
+            gap:3rem;
+            align-items:center;
+            position:relative;
+            z-index:1;
+            width:100%;
+        }
+        .hero-text{flex:1;min-width:300px}
+        .hero-text h1{
+            font-size:2.8rem;
+            margin-bottom:1rem;
+            letter-spacing:-1px;
+            font-weight:700;
+            line-height:1.2;
+        }
+        .hero-text p{
+            opacity:0.95;
+            margin-bottom:1.5rem;
+            font-size:1.05rem;
+            line-height:1.8;
+        }
+        .cta-group{display:flex;gap:0.75rem;flex-wrap:wrap}
+        .cta{
+            display:inline-flex;
+            align-items:center;
+            gap:0.5rem;
+            background:var(--primary);
+            color:#fff;
+            padding:0.85rem 1.5rem;
+            border-radius:10px;
+            text-decoration:none;
+            font-weight:600;
+            box-shadow:0 8px 24px rgba(0,31,63,0.35);
+            transition:all 0.3s ease;
+            border:2px solid var(--primary);
+            cursor:pointer;
+            font-size:1rem;
+        }
+        .cta:hover{
+            transform:translateY(-2px);
+            box-shadow:0 12px 32px rgba(0,31,63,0.45);
+            background:var(--primary-600);
+        }
+        .cta.secondary{
+            background:rgba(255,255,255,0.15);
+            border:2px solid rgba(255,255,255,0.3);
+            backdrop-filter:blur(10px);
+        }
+        .cta.secondary:hover{
+            background:rgba(255,255,255,0.25);
+            border-color:rgba(255,255,255,0.5);
+        }
 
-        main{max-width:1100px;margin: -60px auto 3rem;padding:0 1rem}
-        .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
-        .service-card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(33,48,58,0.06);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
-        .service-card:hover{transform:translateY(-8px);box-shadow:0 18px 45px rgba(33,48,58,0.12)}
-        .service-media{width:100%;height:180px;object-fit:cover}
-        .service-body{padding:1rem 1.25rem;flex:1;display:flex;flex-direction:column}
-        .service-body h3{margin:0 0 .5rem;color:var(--primary)}
-        .service-body p{margin:0 0 1rem;flex:1;color:#32414a}
-        .service-actions{display:flex;gap:.5rem}
-        .btn{display:inline-block;padding:.55rem .85rem;border-radius:8px;text-decoration:none;font-weight:600}
-        .btn-primary{background:var(--primary);color:#fff}
-        .btn-outline{background:transparent;border:1px solid #d9e2ea;color:var(--primary)}
+        /* Main Content */
+        main{
+            max-width:1200px;
+            margin:-60px auto 0;
+            padding:0 1rem;
+            position:relative;
+            z-index:2;
+        }
+        
+        section{margin-bottom:4rem}
+        section h2{
+            font-size:2rem;
+            color:var(--primary);
+            margin-bottom:1.5rem;
+            font-weight:700;
+            position:relative;
+            display:flex;
+            align-items:center;
+            gap:0.75rem;
+        }
+        section h2::after{
+            content:'';
+            flex:1;
+            height:3px;
+            background:linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+            border-radius:2px;
+        }
 
-        .details{margin-top:2rem}
-        .detail-box{background:linear-gradient(180deg,#fff,#fbfdff);padding:1rem;border-radius:10px;margin-bottom:.75rem;box-shadow:0 6px 20px rgba(33,48,58,0.04)}
-        .detail-box h4{margin:0 0 .5rem}
+        /* Card Grid */
+        .card-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+            gap:1.5rem;
+            margin-bottom:2rem;
+        }
+        .service-card{
+            background:var(--card);
+            border-radius:14px;
+            overflow:hidden;
+            box-shadow:var(--shadow-md);
+            display:flex;
+            flex-direction:column;
+            transition:all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border:1px solid rgba(102,126,234,0.1);
+        }
+        .service-card:hover{
+            transform:translateY(-10px);
+            box-shadow:var(--shadow-lg);
+            border-color:var(--accent);
+        }
+        .service-media{
+            width:100%;
+            height:200px;
+            object-fit:cover;
+            background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .service-body{
+            padding:1.5rem;
+            flex:1;
+            display:flex;
+            flex-direction:column;
+        }
+        .service-body h3{
+            margin:0 0 0.75rem;
+            color:var(--primary);
+            font-size:1.25rem;
+            font-weight:700;
+        }
+        .service-body p{
+            margin:0 0 1.25rem;
+            flex:1;
+            color:#516369;
+            line-height:1.7;
+        }
+        .service-actions{
+            display:flex;
+            gap:0.75rem;
+            flex-wrap:wrap;
+        }
+        .btn{
+            display:inline-flex;
+            align-items:center;
+            padding:0.65rem 1rem;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:600;
+            font-size:0.95rem;
+            transition:all 0.2s ease;
+            border:none;
+            cursor:pointer;
+            flex:1;
+            justify-content:center;
+        }
+        .btn-primary{
+            background:var(--primary);
+            color:#fff;
+            box-shadow:0 4px 12px rgba(0,31,63,0.2);
+        }
+        .btn-primary:hover{
+            background:var(--primary-600);
+            box-shadow:0 6px 16px rgba(0,31,63,0.3);
+            transform:translateY(-1px);
+        }
+        .btn-outline{
+            background:transparent;
+            border:2px solid var(--primary);
+            color:var(--primary);
+        }
+        .btn-outline:hover{
+            background:var(--primary);
+            color:#fff;
+        }
 
-        .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-top:1rem}
-        .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+        /* Gallery */
+        .gallery{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+            gap:12px;
+            margin-top:1.5rem;
+            margin-bottom:2rem;
+        }
+        .gallery img{
+            width:100%;
+            height:140px;
+            object-fit:cover;
+            border-radius:10px;
+            box-shadow:var(--shadow-sm);
+            transition:transform 0.3s ease;
+        }
+        .gallery img:hover{
+            transform:scale(1.05);
+        }
 
-        footer{max-width:1100px;margin:2rem auto;padding:1rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-        .contact{background:var(--card);padding:1rem;border-radius:10px;box-shadow:0 8px 30px rgba(33,48,58,0.04)}
+        /* Details Section */
+        .details{margin-top:3rem}
+        .detail-box{
+            background:linear-gradient(135deg,#ffffff 0%,#fbfdff 100%);
+            padding:1.5rem;
+            border-radius:12px;
+            margin-bottom:1rem;
+            box-shadow:var(--shadow-sm);
+            border-left:4px solid var(--accent);
+            transition:all 0.2s ease;
+        }
+        .detail-box:hover{
+            box-shadow:var(--shadow-md);
+            transform:translateX(4px);
+        }
+        .detail-box h4{
+            margin:0 0 0.75rem;
+            color:var(--primary);
+            font-size:1.1rem;
+            font-weight:700;
+        }
+        .detail-box p{
+            margin:0;
+            color:#516369;
+            line-height:1.7;
+        }
 
-        @media (max-width:720px){
-            .hero-inner{flex-direction:column;align-items:flex-start}
-            .hero-text h1{font-size:1.6rem}
+        /* Contact Section */
+        #contact{margin-top:3rem}
+        .contact{
+            background:linear-gradient(135deg, #001f3f 0%, #003050 100%);
+            padding:2.5rem;
+            border-radius:14px;
+            box-shadow:var(--shadow-lg);
+            color:#fff;
+            position:relative;
+            overflow:hidden;
+        }
+        .contact::before{
+            content:'';
+            position:absolute;
+            top:-50%;
+            right:-50%;
+            width:300px;
+            height:300px;
+            background:radial-gradient(circle, rgba(102,126,234,0.2) 0%, transparent 70%);
+            border-radius:50%;
+        }
+        .contact-inner{position:relative;z-index:1}
+        .contact h3{
+            margin:0 0 1rem;
+            color:#fff;
+            font-size:1.8rem;
+        }
+        .contact p{
+            margin:0 0 1.5rem;
+            color:rgba(255,255,255,0.9);
+            font-size:1.05rem;
+        }
+        .contact-buttons{
+            display:flex;
+            gap:1rem;
+            flex-wrap:wrap;
+        }
+        .contact .btn{
+            background:var(--success);
+            color:#fff;
+            box-shadow:0 6px 20px rgba(16,185,129,0.3);
+        }
+        .contact .btn:hover{
+            background:#059669;
+            box-shadow:0 8px 24px rgba(16,185,129,0.4);
+        }
+        .contact .btn-outline{
+            border-color:#fff;
+            color:#fff;
+        }
+        .contact .btn-outline:hover{
+            background:#fff;
+            color:var(--primary);
+        }
+
+        /* Footer */
+        footer{
+            max-width:1200px;
+            margin:3rem auto 0;
+            padding:2rem 1rem;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:2rem;
+            border-top:1px solid rgba(0,31,63,0.1);
+            flex-wrap:wrap;
+        }
+        footer div{color:#6b7780;font-size:0.95rem}
+
+        /* Trust Section */
+        .trust-section{
+            background:linear-gradient(135deg, rgba(102,126,234,0.05) 0%, rgba(16,185,129,0.05) 100%);
+            padding:2rem 1.5rem;
+            border-radius:12px;
+            margin:2rem 0;
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+            gap:1.5rem;
+            border:1px solid rgba(102,126,234,0.1);
+        }
+        .trust-item{
+            display:flex;
+            flex-direction:column;
+            gap:0.5rem;
+            text-align:center;
+        }
+        .trust-item strong{
+            color:var(--primary);
+            font-size:1.25rem;
+        }
+        .trust-item p{
+            color:#516369;
+            font-size:0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width:900px){
+            .hero-inner{flex-direction:column;gap:2rem}
+            .hero-text h1{font-size:2.2rem}
+            section h2{font-size:1.6rem}
+            .card-grid{grid-template-columns:repeat(auto-fit, minmax(250px, 1fr))}
+        }
+        @media (max-width:640px){
+            header.hero{min-height:320px;padding:1.5rem 1rem}
+            .hero-text h1{font-size:1.8rem}
+            .hero-text p{font-size:0.95rem}
+            .cta-group{flex-direction:column}
+            .cta{width:100%}
+            section h2{font-size:1.4rem}
+            section h2::after{display:none}
+            .card-grid{grid-template-columns:1fr;gap:1rem}
             main{margin-top:-40px}
+            .contact{padding:1.5rem}
+            footer{flex-direction:column;text-align:center}
+            .trust-section{grid-template-columns:1fr;gap:1rem}
         }
+
+        /* Loading Animation */
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        main, footer{animation:fadeIn 0.5s ease}
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="hero" id="top">
         <div class="hero-inner">
             <div class="hero-text">
-                <h1>Mobile Detailing — Glanz, Schutz und Pflege vor Ort</h1>
-                <p>Wir kommen zu Dir: professionelle Außen- & Innenreinigung, Keramik-Beschichtungen und Komplettpakete. Schnell, sauber, zuverlässig.</p>
-                <a class="cta" href="#contact">Jetzt buchen</a>
-                <a class="cta secondary" href="#services">Unsere Services</a>
-            </div>
-            <div class="hero-media" aria-hidden="true">
-                <!-- subtle decorative SVG */ -->
-                <svg width="220" height="140" viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:12px;overflow:visible;filter:drop-shadow(0 10px 30px rgba(0,0,0,0.12));">
-                    <rect x="0" y="0" width="220" height="140" rx="12" fill="rgba(255,255,255,0.06)"/>
-                    <text x="12" y="26" fill="#fff" style="font-weight:700;font-size:14px">Mobile Detailing</text>
-                    <text x="12" y="52" fill="#fff" style="font-size:12px;opacity:0.9">Professionelle Pflege vor Ort</text>
-                </svg>
+                <h1>Mobile Detailing — Der perfekte Glanz vor Deiner Tür</h1>
+                <p>Professionelle Fahrzeugpflege kommt zu dir nach Hause. Außenreinigung, Innenaufbereitung, Keramik-Beschichtung und hochwertige Treatments — mit besten Materialien und jahrelanger Erfahrung.</p>
+                <div class="cta-group">
+                    <a class="cta" href="#contact">🚗 Jetzt Termin buchen</a>
+                    <a class="cta secondary" href="#services">Leistungen ansehen</a>
+                </div>
             </div>
         </div>
     </header>
 
     <main>
-        <section id="services" class="section">
-            <h2 style="color:var(--primary);margin-bottom:1rem">Unsere Dienstleistungen</h2>
+        <!-- Services Section -->
+        <section id="services">
+            <h2>Unsere Dienstleistungen</h2>
 
             <div class="card-grid">
                 <article class="service-card">
-                    <img loading="lazy" class="service-media" src="https://source.unsplash.com/800x600/?car,wash,detail" alt="Außenreinigung">
+                    <div class="service-media" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);display:flex;align-items:center;justify-content:center;font-size:3rem">🧼</div>
                     <div class="service-body">
-                        <h3>🧼 Außenreinigung</h3>
-                        <p>Schonende Vorwäsche, Handwäsche und Versiegelung für maximalen Glanz und Schutz.</p>
+                        <h3>Außenreinigung</h3>
+                        <p>Schonende Vorwäsche, intensive Handwäsche aller Oberflächen, Felgenreinigung und professionelle Versiegelung für maximalen Glanz.</p>
                         <div class="service-actions">
                             <a class="btn btn-primary" href="#detail-aussen">Mehr erfahren</a>
                             <a class="btn btn-outline" href="#contact">Anfragen</a>
@@ -108,10 +435,10 @@
                 </article>
 
                 <article class="service-card">
-                    <img loading="lazy" class="service-media" src="https://source.unsplash.com/800x600/?car,interior,clean" alt="Innenreinigung">
+                    <div class="service-media" style="background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%);display:flex;align-items:center;justify-content:center;font-size:3rem">✨</div>
                     <div class="service-body">
-                        <h3>✨ Innenreinigung</h3>
-                        <p>Tiefenreinigung von Sitzen, Teppichen und Oberflächen – für ein frisches, gepflegtes Fahrgefühl.</p>
+                        <h3>Innenreinigung</h3>
+                        <p>Tiefenreinigung von Sitzen, Teppichen und Polstern. Cockpit-Reinigung, Lüftungsanlage und professionelle Geruchsneutralisierung.</p>
                         <div class="service-actions">
                             <a class="btn btn-primary" href="#detail-innen">Mehr erfahren</a>
                             <a class="btn btn-outline" href="#contact">Anfragen</a>
@@ -120,10 +447,10 @@
                 </article>
 
                 <article class="service-card">
-                    <img loading="lazy" class="service-media" src="https://source.unsplash.com/800x600/?car,ceramic,coating" alt="Keramik-Beschichtung">
+                    <div class="service-media" style="background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);display:flex;align-items:center;justify-content:center;font-size:3rem">🛡️</div>
                     <div class="service-body">
-                        <h3>🛡️ Keramik-Beschichtung</h3>
-                        <p>Langanhaltender Schutz für den Lack: UV-Schutz, Wasserabweisung und verbesserte Reinigungsfreundlichkeit.</p>
+                        <h3>Keramik-Beschichtung</h3>
+                        <p>Langanhaltender Lackschutz mit UV-Schutz, extremer Wasserabweisung und erhöhter Reinigungsfreundlichkeit für bis zu 2 Jahre.</p>
                         <div class="service-actions">
                             <a class="btn btn-primary" href="#detail-keramik">Mehr erfahren</a>
                             <a class="btn btn-outline" href="#contact">Anfragen</a>
@@ -132,10 +459,10 @@
                 </article>
 
                 <article class="service-card">
-                    <img loading="lazy" class="service-media" src="https://source.unsplash.com/800x600/?car,glass,clean" alt="Fensteraufbereitung">
+                    <div class="service-media" style="background:linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);display:flex;align-items:center;justify-content:center;font-size:3rem">🪟</div>
                     <div class="service-body">
-                        <h3>🪟 Fensteraufbereitung</h3>
-                        <p>Klare Sicht bei jedem Wetter: Reinigung, Politur und hydrophobe Behandlung möglich.</p>
+                        <h3>Fensteraufbereitung</h3>
+                        <p>Streifenfreie Reinigung aller Scheiben, professionelle Politur und optional hydrophobe Beschichtung für perfekte Sicht.</p>
                         <div class="service-actions">
                             <a class="btn btn-primary" href="#detail-fenster">Mehr erfahren</a>
                             <a class="btn btn-outline" href="#contact">Anfragen</a>
@@ -144,10 +471,10 @@
                 </article>
 
                 <article class="service-card">
-                    <img loading="lazy" class="service-media" src="https://source.unsplash.com/800x600/?car,wheel,tire" alt="Reifenpflege">
+                    <div class="service-media" style="background:linear-gradient(135deg, #fa709a 0%, #fee140 100%);display:flex;align-items:center;justify-content:center;font-size:3rem">🛞</div>
                     <div class="service-body">
-                        <h3>🛞 Reifenpflege</h3>
-                        <p>Felgenreinigung, Bremsstaubentfernung und langanhaltendes Pflegefinish.</p>
+                        <h3>Reifenpflege & Felgen</h3>
+                        <p>Intensive Felgenreinigung, Bremsstaubentfernung und hochwertiges Reifenshine-Finish mit langanhaltender Wirkung.</p>
                         <div class="service-actions">
                             <a class="btn btn-primary" href="#detail-reifen">Mehr erfahren</a>
                             <a class="btn btn-outline" href="#contact">Anfragen</a>
@@ -156,10 +483,10 @@
                 </article>
 
                 <article class="service-card">
-                    <img loading="lazy" class="service-media" src="https://source.unsplash.com/800x600/?car,detailing,full" alt="Komplettpaket">
+                    <div class="service-media" style="background:linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);display:flex;align-items:center;justify-content:center;font-size:3rem">🎯</div>
                     <div class="service-body">
-                        <h3>🎯 Komplettpaket</h3>
-                        <p>Alle Services kombiniert für ein Rundum-Ergebnis und maximale Pflege.</p>
+                        <h3>Komplettpaket</h3>
+                        <p>Alle Premium-Services: Außen, Innen, Keramik-Beschichtung und Reifenpflege in einem rundum perfekten Paket.</p>
                         <div class="service-actions">
                             <a class="btn btn-primary" href="#detail-komplett">Mehr erfahren</a>
                             <a class="btn btn-outline" href="#contact">Anfragen</a>
@@ -168,68 +495,116 @@
                 </article>
             </div>
 
-            <!-- Gallery / KI-Bilder Hinweis -->
-            <div style="margin-top:1.25rem">
-                <h3 style="margin-bottom:.5rem;color:var(--primary)">KI-generierte Beispielbilder</h3>
-                <p style="margin:0 0 .5rem;color:#516369">Die gezeigten Bilder sind hochwertige Vorschauen; gern ersetze ich sie durch von einer KI generierte Motive in gewünschtem Stil und Winkel — sag mir einfach welche Motive du bevorzugst (z. B. "schwarzer Sportwagen, Studio-Licht").</p>
-                <div class="gallery">
-                    <img loading="lazy" src="https://source.unsplash.com/400x300/?car,shine" alt="Beispiel 1">
-                    <img loading="lazy" src="https://source.unsplash.com/400x300/?car,polish" alt="Beispiel 2">
-                    <img loading="lazy" src="https://source.unsplash.com/400x300/?car,detail" alt="Beispiel 3">
-                    <img loading="lazy" src="https://source.unsplash.com/400x300/?car,interior" alt="Beispiel 4">
+            <!-- Trust Section -->
+            <div class="trust-section">
+                <div class="trust-item">
+                    <strong>✓ 100%</strong>
+                    <p>Zufriedenheitsgarantie</p>
+                </div>
+                <div class="trust-item">
+                    <strong>⏱️ Vor Ort</strong>
+                    <p>Dein Zuhause oder Büro</p>
+                </div>
+                <div class="trust-item">
+                    <strong>🏆 Premium</strong>
+                    <p>Hochwertige Materialien</p>
+                </div>
+                <div class="trust-item">
+                    <strong>🔧 Profis</strong>
+                    <p>Jahrelange Erfahrung</p>
                 </div>
             </div>
-
         </section>
 
+        <!-- Details Section -->
         <section class="details">
+            <h2>Service-Details</h2>
+            
             <div id="detail-aussen" class="detail-box">
-                <h4>Außenreinigung</h4>
-                <p>Schonende Vorreinigung, Felgenreinigung, Insektenentfernung, Handwäsche und Versiegelung. Dauer: 45–120 Min (abhängig vom Fahrzeug).</p>
+                <h4>🧼 Außenreinigung — Vollständiger Überblick</h4>
+                <p>Umfasst: Vorreinigung mit schonenden Reinigern, intensive Felgenreinigung und Insektenentfernung, sorgfältige Handwäsche aller Oberflächen, Lackpolitur und abschließende Versiegelung für nachhaltigen Glanz und Schutz. <strong>Dauer: 60–120 Min</strong> (je nach Fahrzeugzustand).</p>
             </div>
 
             <div id="detail-innen" class="detail-box">
-                <h4>Innenreinigung</h4>
-                <p>Intensive Reinigung von Sitzen, Teppichen, Polstern; Reinigung von Armaturen und Cockpit; Geruchsneutralisierung auf Wunsch.</p>
+                <h4>✨ Innenreinigung — Tiefenaufbereitung</h4>
+                <p>Intensive Reinigung von Sitzen und Polstern mit spezialisierten Geräten, gründliche Teppichreinigung, Armaturen- und Cockpit-Reinigung, Alcantara-Behandlung (falls vorhanden) und professionelle Geruchsneutralisierung auf Wunsch. <strong>Dauer: 90–150 Min</strong>.</p>
             </div>
 
             <div id="detail-keramik" class="detail-box">
-                <h4>Keramik-Beschichtung</h4>
-                <p>Professionelle Vorbereitung, Grundierung und Auftrag einer schützenden Keramikschicht. Dauer und Haltbarkeit abhängig vom Paket.</p>
+                <h4>🛡️ Keramik-Beschichtung — Maximaler Schutz</h4>
+                <p>Professionelle Lackvorbereitung und Grundierung, hochwertige Keramik-Nanobeschichtung mit 2 Jahren Haltbarkeit, extreme Wasserabweisung und UV-Schutz, verbesserte Reinigungsfreundlichkeit. <strong>Dauer: 2–4 Stunden</strong>, abhängig vom Fahrzeugtyp.</p>
             </div>
 
             <div id="detail-fenster" class="detail-box">
-                <h4>Fensteraufbereitung</h4>
-                <p>Streifenfreie Reinigung, Politur und optionale hydrophobe Beschichtung für verbesserte Sicht.</p>
+                <h4>🪟 Fensteraufbereitung — Klare Sicht</h4>
+                <p>Streifenfreie Reinigung aller Scheiben innen und außen, professionelle Politur für maximale Klarheit, optional hydrophobe Nanobeschichtung für Regen-Abweisung und verbesserte Sichtbarkeit. <strong>Dauer: 30–45 Min</strong>.</p>
             </div>
 
             <div id="detail-reifen" class="detail-box">
-                <h4>Reifenpflege</h4>
-                <p>Intensive Felgenreinigung, Versiegelung und Tiefenglanz für die Reifen.</p>
+                <h4>🛞 Reifenpflege & Felgen — Der perfekte Glanz</h4>
+                <p>Intensive Felgenreinigung mit Spezialreinigern, Bremsstaubentfernung und Konservierung, hochwertiges Reifenshine-Finish mit langanhaltender schwarzer Optik. Verleiht deinen Felgen den Show-Look. <strong>Dauer: 45–75 Min</strong>.</p>
             </div>
 
             <div id="detail-komplett" class="detail-box">
-                <h4>Komplettpaket</h4>
-                <p>Alles aus einer Hand: Außen, Innen, Pflege und finale Kontrolle für ein perfektes Ergebnis.</p>
+                <h4>🎯 Komplettpaket — Das Rundum-Sorglos-Paket</h4>
+                <p>Alles auf einmal: Außenreinigung + Innenaufbereitung + Keramik-Beschichtung + Reifenpflege + finale Qualitätskontrolle. Dein Auto wird rundum perfekt gepflegt und geschützt. <strong>Dauer: 4–6 Stunden</strong>. Bestes Preis-Leistungs-Verhältnis!</p>
             </div>
         </section>
 
-        <section id="contact" style="margin-top:1.5rem">
-            <div class="contact" style="display:flex;flex-direction:column;gap:.5rem">
-                <h3 style="margin:0;color:var(--primary)">Kontakt & Buchung</h3>
-                <p style="margin:0;color:#475d66">Schreib uns per E‑Mail oder ruf an — wir machen dir gerne ein Angebot.</p>
-                <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem">
-                    <a class="btn btn-primary" href="mailto:kontakt@mobile-detailing.example">E‑Mail schreiben</a>
-                    <a class="btn btn-outline" href="tel:+491234567890">Anrufen</a>
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="contact">
+                <div class="contact-inner">
+                    <h3>Termin buchen oder Fragen stellen?</h3>
+                    <p>Wir freuen uns auf Dich! Schreib uns per Nachricht, rufe an oder nutze unser Kontaktformular — wir antworten innerhalb von 24 Stunden.</p>
+                    <div class="contact-buttons">
+                        <a class="btn btn-primary" href="https://wa.me/491234567890" target="_blank">💬 WhatsApp schreiben</a>
+                        <a class="btn btn-primary" href="tel:+491234567890">☎️ Anrufen</a>
+                        <a class="btn btn-outline" href="mailto:kontakt@mobile-detailing.de">✉️ E-Mail</a>
+                    </div>
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer>
-        <div style="color:#6b7780">&copy; 2026 Mobile Detailing</div>
-        <div style="color:#6b7780">Made with care · Fragen? schreib@mobile-detailing.example</div>
+        <div>
+            <strong>Mobile Detailing</strong><br>
+            📍 Dein Standort | 🕐 Mo–Sa, 08:00–18:00 Uhr
+        </div>
+        <div>
+            <strong>Kontakt</strong><br>
+            ☎️ +49 123 4567890<br>
+            ✉️ kontakt@mobile-detailing.de
+        </div>
+        <div style="text-align:right">
+            &copy; 2026 Mobile Detailing — Dein Auto verdient das Beste<br>
+            <small style="opacity:0.8">Datenschutz · Impressum · AGB</small>
+        </div>
     </footer>
+
+    <script>
+        // Smooth scroll behavior für Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({behavior: 'smooth'});
+                }
+            });
+        });
+
+        // Aktive Sektion beim Scrollen highlighting
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('section').forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom > 100) {
+                    document.querySelectorAll('section').forEach(s => s.style.opacity = '0.7');
+                    section.style.opacity = '1';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
