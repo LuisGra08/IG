@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IG Detailing</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:#070707;
+  color:white;
+}
+
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:999;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(212,175,55,.3);
+}
+
+nav{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  color:#d4af37;
+  font-size:24px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:25px;
+  font-size:14px;
+}
+
+nav a:hover{
+  color:#d4af37;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:120px 25px 80px;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.55)),
+    url("IG_Detailing_Banner.png");
+  background-size:cover;
+  background-position:center;
+}
+
+.hero-content{
+  max-width:1100px;
+  margin:auto;
+  width:100%;
+}
+
+.badge{
+  display:inline-block;
+  color:#d4af37;
+  border:1px solid #d4af37;
+  padding:8px 16px;
+  border-radius:50px;
+  margin-bottom:25px;
+}
+
+h1{
+  font-size:clamp(42px,8vw,85px);
+  line-height:1;
+  text-transform:uppercase;
+  margin-bottom:25px;
+}
+
+.gold{
+  color:#d4af37;
+}
+
+.hero p{
+  max-width:650px;
+  font-size:19px;
+  color:#ddd;
+  margin-bottom:35px;
+}
+
+.btn{
+  display:inline-block;
+  background:linear-gradient(135deg,#d4af37,#ffe88a);
+  color:#111;
+  text-decoration:none;
+  padding:15px 30px;
+  border-radius:50px;
+  font-weight:bold;
+}
+
+section{
+  padding:90px 25px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:55px;
+}
+
+.title span{
+  color:#d4af37;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.title h2{
+  font-size:clamp(32px,5vw,52px);
+  margin-top:10px;
+}
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:24px;
+}
+
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  border:1px solid rgba(212,175,55,.25);
+  border-radius:24px;
+  padding:32px;
+  transition:.3s;
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  border-color:#d4af37;
+}
+
+.card .icon{
+  font-size:36px;
+  margin-bottom:18px;
+}
+
+.card h3{
+  color:#d4af37;
+  font-size:23px;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:#ccc;
+}
+
+.about{
+  background:
+    radial-gradient(circle at top left,rgba(212,175,55,.14),transparent 35%),
+    #0c0c0c;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:45px;
+  align-items:center;
+}
+
+.about-box{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:28px;
+  padding:38px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:30px;
+}
+
+.stat{
+  background:#111;
+  border:1px solid rgba(212,175,55,.25);
+  border-radius:18px;
+  padding:22px;
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+  color:#d4af37;
+  font-size:28px;
+}
+
+.contact{
+  text-align:center;
+  background:linear-gradient(135deg,#050505,#171717);
+}
+
+.contact-box{
+  max-width:750px;
+  margin:auto;
+  padding:50px 30px;
+  border:1px solid rgba(212,175,55,.35);
+  border-radius:30px;
+  background:rgba(255,255,255,.04);
+}
+
+.contact h2{
+  font-size:clamp(34px,5vw,55px);
+  margin-bottom:20px;
+}
+
+.contact p{
+  color:#ccc;
+  margin-bottom:30px;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#999;
+  background:#050505;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+@media(max-width:750px){
+  nav div:last-child{
+    display:none;
+  }
+
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="logo">IG DETAILING</div>
+    <div>
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ueber">Über uns</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">Premium Mobile Autoaufbereitung</div>
+    <h1>Dein Auto.<br><span class="gold">Perfekt gepflegt.</span></h1>
+    <p>
+      Hochwertige Innen- und Außenaufbereitung, Lackpflege,
+      Keramikschutz und professionelle Fahrzeugpflege direkt bei dir vor Ort.
+    </p>
+    <a class="btn" href="#kontakt">Termin anfragen</a>
+  </div>
+</section>
+
+<section id="leistungen">
+  <div class="container">
+    <div class="title">
+      <span>Unsere Leistungen</span>
+      <h2>Detailing auf Premium-Niveau</h2>
+    </div>
+
+    <div class="services">
+      <div class="card">
+        <div class="icon">✨</div>
+        <h3>Außenreinigung</h3>
+        <p>Schonende Handwäsche, Felgenreinigung und Glanzfinish.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🧽</div>
+        <h3>Innenreinigung</h3>
+        <p>Tiefenreinigung von Sitzen, Teppichen und Armaturen.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🛡️</div>
+        <h3>Keramikschutz</h3>
+        <p>Langanhaltender Lackschutz mit starkem Glanz.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🪟</div>
+        <h3>Fensteraufbereitung</h3>
+        <p>Klare Scheiben und hydrophobe Glasversiegelung.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">⚙️</div>
+        <h3>Reifenpflege</h3>
+        <p>Felgenaufbereitung und hochwertiger Reifenglanz.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🏆</div>
+        <h3>Komplettpaket</h3>
+        <p>Innen, außen, Lack, Felgen und alle Details.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="ueber">
+  <div class="container about-grid">
+    <div>
+      <div class="title" style="text-align:left;margin-bottom:25px;">
+        <span>Warum IG Detailing?</span>
+        <h2>Mehr als nur Autowäsche</h2>
+      </div>
+      <p style="color:#ccc;">
+        Wir behandeln jedes Fahrzeug mit höchster Sorgfalt.
+        Unser Ziel ist nicht nur Sauberkeit, sondern ein hochwertiges Finish.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <strong>100%</strong>
+          <span>Sorgfalt</span>
+        </div>
+        <div class="stat">
+          <strong>5★</strong>
+          <span>Finish</span>
+        </div>
+        <div class="stat">
+          <strong>Vor Ort</strong>
+          <span>Service</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-box">
+      <h3 style="color:#d4af37;font-size:28px;margin-bottom:18px;">
+        Premium-Aufbereitung
+      </h3>
+      <p style="color:#ccc;">
+        Ob Alltagsfahrzeug, Sportwagen oder Leasingrückgabe –
+        wir sorgen für ein sauberes, gepflegtes und hochwertiges Erscheinungsbild.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="contact-box">
+    <h2>Bereit für neuen Glanz?</h2>
+    <p>Schreib uns jetzt und sichere dir deinen Termin.</p>
+    <a class="btn" href="mailto:luisgratz@web.de">Jetzt Kontakt aufnehmen</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 IG Detailing · Premium Mobile Autoaufbereitung
+</footer>
+
+</body>
+</html>
